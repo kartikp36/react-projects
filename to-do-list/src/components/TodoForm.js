@@ -10,30 +10,30 @@ export default class TodoList extends React.Component {
 			[event.target.name]: event.target.value,
 		});
 	};
-	
-	handleSubmit = event => {
+
+	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.onSubmit({
-		  id: Math.random(),
-		  text: this.state.text,
-		  complete: false
+			id: Math.random(),
+			text: this.state.text,
+			complete: false,
 		});
 		this.setState({
-		  text: ""
+			text: "",
 		});
-	  };
+	};
 
 	render() {
 		return (
-		  <form onSubmit={this.handleSubmit}>
-			<input
-			  name="text"
-			  value={this.state.text}
-			  onChange={this.handleChange}
-			  placeholder="todo..."
-			/>
-			<button onClick={this.handleSubmit}>Add todo</button>
-		  </form>
+			<form onSubmit={this.handleSubmit}>
+				<input
+					name='text'
+					value={this.state.text}
+					onChange={this.handleChange}
+					placeholder='Todo...'
+				/>
+				<button onClick={this.handleSubmit}>Add todo</button>
+			</form>
 		);
-	  }
 	}
+}
