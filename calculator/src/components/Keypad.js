@@ -5,11 +5,13 @@ export const Keypad = () => {
 	const [result, setResult] = useState("");
 	const calculate = () => {
 		setResult(eval(result));
-	};
+  };
 
 	const buttonPressed = (button) => {
 		if (button.target.name === "=") {
 			calculate();
+		} else if (button.target.name === "Clear All") {
+			setResult("");
 		} else {
 			setResult(result + button.target.name);
 		}
@@ -57,6 +59,9 @@ export const Keypad = () => {
 				</button>
 				<button name='=' onClick={buttonPressed}>
 					=
+				</button>
+        <button name='Clear All' onClick={buttonPressed}>
+					Clear All
 				</button>
 			</div>
 		</>
