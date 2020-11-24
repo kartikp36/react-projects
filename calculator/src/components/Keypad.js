@@ -2,10 +2,19 @@ import React from "react";
 import { useState } from "react";
 
 export const Keypad = () => {
-	const [result, setResult] = useState("press a button");
-	const buttonPressed = (b) => {
-		setResult(b.target.name);
+	const [result, setResult] = useState("");
+	const calculate = () => {
+		setResult(eval(result));
 	};
+
+	const buttonPressed = (button) => {
+		if (button.target.name === "=") {
+			calculate();
+		} else {
+			setResult(result + button.target.name);
+		}
+	};
+
 	return (
 		<>
 			<h2>Calculator</h2>
