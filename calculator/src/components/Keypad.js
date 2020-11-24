@@ -28,6 +28,7 @@ export const Keypad = () => {
 		return array;
 	};
 
+<<<<<<< Updated upstream
 	const buttonPressed = (button) => {
 		if (button.target.name === "=") {
 			calculate();
@@ -46,4 +47,15 @@ export const Keypad = () => {
 			{renderKeys()}
 		</div>
 	);
+=======
+  return (
+    <div className='display'>
+      <div>
+        <p>Calculator</p>
+        {result}
+      </div>
+      <div className='buttons'>{renderKeys()}</div>
+    </div>
+  );
+>>>>>>> Stashed changes
 };
