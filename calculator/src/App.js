@@ -1,9 +1,11 @@
 import React from "react";
 
+import { Keypad } from "./components/Keypad";
+
 function App() {
 	return (
 		<center>
-			<h2>Calculator</h2>
+			<Keypad />
 		</center>
 	);
 }
