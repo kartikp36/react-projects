@@ -1,0 +1,27 @@
+.display {
+  text-align: center;
+  font-size: 35px;
+  font-size: xx-large;
+  background-color: darkgrey;
+  text-align: center;
+  margin: auto;
+  display: block;
+  max-width: 500px;
+  min-height: 400px;
+}
+
+.buttons {
+  text-align: center;
+  margin: auto;
+  display: block;
+  max-width: 500px;
+  background-color: darkgrey;
+}
+
+.buttons button {
+  font-size: x-large;
+
+  margin: auto;
+  height: 40px;
+  width: 30%;
+}
