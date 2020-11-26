@@ -1,39 +1,27 @@
 import React from "react";
 
 export default class TodoList extends React.Component {
-	state = {
-		text: "",
-	};
-
-	handleChange = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value,
-		});
-	};
-
-	handleSubmit = (event) => {
-		event.preventDefault();
-		this.props.onSubmit({
-			id: Math.random(),
-			text: this.state.text,
-			complete: false,
-		});
-		this.setState({
-			text: "",
-		});
-	};
-
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<input
-					name='text'
-					value={this.state.text}
-					onChange={this.handleChange}
-					placeholder='Todo...'
-				/>
-				<button onClick={this.handleSubmit}>Add todo</button>
-			</form>
-		);
-	}
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.handleSubmit(this.props.state.text.value);
+  };
+  render() {
+    return (
+      <form onSubmit={this.handleFormSubmit}>
+        <input
+          name='text'
+          value={this.props.text}
+          ref={(c) => (this.props.state.text = c)}
+          placeholder='Todo...'
+        />
+        <button
+          type='button'
+          onClick={() => {
+            this.props.handleSubmit(this.props.state.text.value);
+          }}>
+          Add todo
+        </button>
+      </form>
+    );
+  }
 }
