@@ -1,27 +1,21 @@
 import React from "react";
 
-export default class TodoList extends React.Component {
-  handleFormSubmit = (event) => {
+export const TodoForm = (props) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-    this.props.handleSubmit(this.props.state.text.value);
+    props.handleSubmit(props.text.value);
   };
-  render() {
-    return (
-      <form onSubmit={this.handleFormSubmit}>
-        <input
-          name='text'
-          value={this.props.text}
-          ref={(c) => (this.props.state.text = c)}
-          placeholder='Todo...'
-        />
-        <button
-          type='button'
-          onClick={() => {
-            this.props.handleSubmit(this.props.state.text.value);
-          }}>
-          Add todo
-        </button>
-      </form>
-    );
-  }
-}
+
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <input name='text' ref={(c) => props.setText(c)} placeholder='Todo...' />
+      <button
+        type='button'
+        onClick={() => {
+          props.handleSubmit(props.text.value);
+        }}>
+        Add todo
+      </button>
+    </form>
+  );
+};

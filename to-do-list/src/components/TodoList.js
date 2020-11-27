@@ -1,26 +1,17 @@
-import React from "react";
-import TodoForm from "./TodoForm";
-import ToggleTodo from "./ToggleTodo";
+import React, { useState } from "react";
+import { TodoForm } from "./TodoForm";
+import { ToggleTodo } from "./ToggleTodo";
 
-export default class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.addTodo = this.addTodo.bind(this);
+export const TodoList = () => {
+  const [text, setText] = useState("");
+  const [list, setList] = useState([]);
 
-    this.state = {
-      text: "",
-      list: [],
-    };
-  }
-
-  addTodo(newTodo) {
-    this.setState({
-      list: [newTodo, ...this.state.list],
-    });
-  }
-  toggleComplete(id) {
-    this.setState({
-      list: this.state.list.map((todo) => {
+  const addTodo = (newTodo) => {
+    setList([newTodo, ...list]);
+  };
+  const toggleComplete = (id) => {
+    setList(
+      list.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -29,37 +20,26 @@ export default class TodoList extends React.Component {
         } else {
           return todo;
         }
-      }),
-    });
-  }
+      })
+    );
+  };
 
-  handleSubmit = (inputText) => {
-    this.addTodo({
+  const handleSubmit = (inputText) => {
+    addTodo({
       id: Math.random(),
       text: inputText,
       complete: false,
     });
   };
-  render() {
-    return (
-      <div>
-        <h2>Todo List</h2>
 
-        <TodoForm
-          onSubmit={this.handleSubmit}
-          state={this.state}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
+  return (
+    <div>
+      <h2>Todo List</h2>
 
-        {this.state.list.map((todo) => (
-          <ToggleTodo
-            key={todo.id}
-            toggleComplete={() => this.toggleComplete(todo.id)}
-            todo={todo}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+      <TodoForm {...{ handleSubmit, setText, text, list }} />
+      {list.map((todo) => (
+        <ToggleTodo key={todo.id} {...{ toggleComplete, todo }} />
+      ))}
+    </div>
+  );
+};
