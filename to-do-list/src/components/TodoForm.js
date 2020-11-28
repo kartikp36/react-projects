@@ -16,6 +16,14 @@ export const TodoForm = (props) => {
         <Form>
           <Field name='text' type='text' />
           <button type='submit'>Add todo</button>
+          <button
+            type='button'
+            className='sort'
+            onClick={() => {
+              props.handleSort();
+            }}>
+            Sort
+          </button>
         </Form>
       </Formik>
     </div>
