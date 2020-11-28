@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { render } from "react-dom";
 import { TodoForm } from "./TodoForm";
 import { ToggleTodo } from "./ToggleTodo";
 
@@ -36,16 +35,21 @@ export const TodoList = () => {
   };
 
   const HandleAscSort = () => {
-    let sortedList = list.sort((a, b) =>
-      a.created.split(":").join().localeCompare(b.created.split(":").join())
+    setList(
+      [...list].sort((a, b) =>
+        a.created.split(":").join().localeCompare(b.created.split(":").join())
+      )
     );
   };
 
   const HandleDescSort = () => {
-    let sortedList = list.sort((a, b) =>
-      a.created.split(":").join().localeCompare(b.created.split(":").join())
+    setList(
+      [...list]
+        .sort((a, b) =>
+          a.created.split(":").join().localeCompare(b.created.split(":").join())
+        )
+        .reverse()
     );
-    setList(sortedList.reverse());
   };
 
   return (

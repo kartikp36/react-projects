@@ -14,7 +14,7 @@ export const ToggleTodo = (props) => {
         }}></input>
 
       {props.todo.text}
-      {"(" + props.todo.created + ")"}
+      {" (" + props.todo.created + ")"}
     </div>
   );
 };
