@@ -1,21 +1,23 @@
 import React from "react";
+import { Formik, Field, Form } from "formik";
 
 export const TodoForm = (props) => {
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    props.handleSubmit(props.text.value);
+  const handleFormSubmit = (inputText) => {
+    props.handleSubmit(inputText);
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <input name='text' ref={(c) => props.setText(c)} placeholder='Todo...' />
-      <button
-        type='button'
-        onClick={() => {
-          props.handleSubmit(props.text.value);
+    <div className='form'>
+      <Formik
+        initialValues={{ text: "" }}
+        onSubmit={(values) => {
+          handleFormSubmit(values.text);
         }}>
-        Add todo
-      </button>
-    </form>
+        <Form>
+          <Field name='text' type='text' />
+          <button type='submit'>Add todo</button>
+        </Form>
+      </Formik>
+    </div>
   );
 };

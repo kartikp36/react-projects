@@ -36,7 +36,7 @@ export const TodoList = () => {
     <div>
       <h2>Todo List</h2>
 
-      <TodoForm {...{ handleSubmit, setText, text, list }} />
+      <TodoForm {...{ handleSubmit, text }} />
       {list.map((todo) => (
         <ToggleTodo key={todo.id} {...{ toggleComplete, todo }} />
       ))}
