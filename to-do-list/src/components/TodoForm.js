@@ -20,9 +20,17 @@ export const TodoForm = (props) => {
             type='button'
             className='sort'
             onClick={() => {
-              props.handleSort();
+              props.HandleAscSort();
             }}>
-            Sort
+            Sort by Oldest
+          </button>
+          <button
+            type='button'
+            className='sort'
+            onClick={() => {
+              props.HandleDescSort();
+            }}>
+            Sort by Latest
           </button>
         </Form>
       </Formik>

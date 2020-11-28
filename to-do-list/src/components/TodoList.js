@@ -35,22 +35,26 @@ export const TodoList = () => {
     });
   };
 
-  const handleSort = () => {
-    let sortedList = list.sort(
-      (a, b) =>
-        Date.parse(new Date(a.created.split(":").reverse().join("-"))) -
-        Date.parse(new Date(b.created.split(":").reverse().join("-")))
+  const HandleAscSort = () => {
+    let sortedList = list.sort((a, b) =>
+      a.created.split(":").join().localeCompare(b.created.split(":").join())
     );
-    sortedList.reverse();
-    console.log(sortedList);
-    setList(sortedList);
+  };
+
+  const HandleDescSort = () => {
+    let sortedList = list.sort((a, b) =>
+      a.created.split(":").join().localeCompare(b.created.split(":").join())
+    );
+    setList(sortedList.reverse());
   };
 
   return (
     <div>
       <h2>Todo List</h2>
 
-      <TodoForm {...{ handleSort, handleSubmit, text, created }} />
+      <TodoForm
+        {...{ HandleAscSort, HandleDescSort, handleSubmit, text, created }}
+      />
       {list.map((todo) => (
         <ToggleTodo key={todo.id} {...{ toggleComplete, todo }} />
       ))}
