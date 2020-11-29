@@ -9,6 +9,7 @@ export const TodoList = () => {
 
   const addTodo = (newTodo) => {
     setList([newTodo, ...list]);
+    console.log(list);
   };
   const toggleComplete = (id) => {
     setList(
@@ -30,24 +31,20 @@ export const TodoList = () => {
       id: Math.random(),
       text: inputText,
       complete: false,
-      created: new Date().toLocaleTimeString(),
+      created: new Date(),
     });
   };
 
   const handleAscSort = () => {
     setList(
-      [...list].sort((a, b) =>
-        a.created.split(":").join().localeCompare(b.created.split(":").join())
-      )
+      [...list].sort((a, b) => new Date(a.created) - new Date(b.created))
     );
   };
 
   const handleDescSort = () => {
     setList(
       [...list]
-        .sort((a, b) =>
-          a.created.split(":").join().localeCompare(b.created.split(":").join())
-        )
+        .sort((a, b) => new Date(a.created) - new Date(b.created))
         .reverse()
     );
   };
