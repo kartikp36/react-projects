@@ -23,20 +23,10 @@ export const TodoForm = (props) => {
         <Form>
           <Field name='text' type='text' />
           <button type='submit'>Add todo</button>
-          <button
-            type='button'
-            className='sort'
-            onClick={() => {
-              props.handleAscSort();
-            }}>
+          <button type='button' className='sort' onClick={props.handleAscSort}>
             Sort by Oldest
           </button>
-          <button
-            type='button'
-            className='sort'
-            onClick={() => {
-              props.handleDescSort();
-            }}>
+          <button type='button' className='sort' onClick={props.handleDescSort}>
             Sort by Latest
           </button>
         </Form>
