@@ -1,5 +1,10 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  text: Yup.string().required("Required"),
+});
 
 export const TodoForm = (props) => {
   const handleFormSubmit = (inputText) => {
@@ -10,6 +15,7 @@ export const TodoForm = (props) => {
     <div className='form'>
       <Formik
         initialValues={{ text: "" }}
+        validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
           handleFormSubmit(values.text);
           resetForm();
