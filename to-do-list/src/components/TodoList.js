@@ -34,7 +34,7 @@ export const TodoList = () => {
     });
   };
 
-  const HandleAscSort = () => {
+  const handleAscSort = () => {
     setList(
       [...list].sort((a, b) =>
         a.created.split(":").join().localeCompare(b.created.split(":").join())
@@ -42,7 +42,7 @@ export const TodoList = () => {
     );
   };
 
-  const HandleDescSort = () => {
+  const handleDescSort = () => {
     setList(
       [...list]
         .sort((a, b) =>
@@ -57,7 +57,7 @@ export const TodoList = () => {
       <h2>Todo List</h2>
 
       <TodoForm
-        {...{ HandleAscSort, HandleDescSort, handleSubmit, text, created }}
+        {...{ handleAscSort, handleDescSort, handleSubmit, text, created }}
       />
       {list.map((todo) => (
         <ToggleTodo key={todo.id} {...{ toggleComplete, todo }} />

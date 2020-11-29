@@ -10,8 +10,9 @@ export const TodoForm = (props) => {
     <div className='form'>
       <Formik
         initialValues={{ text: "" }}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           handleFormSubmit(values.text);
+          resetForm();
         }}>
         <Form>
           <Field name='text' type='text' />
@@ -20,7 +21,7 @@ export const TodoForm = (props) => {
             type='button'
             className='sort'
             onClick={() => {
-              props.HandleAscSort();
+              props.handleAscSort();
             }}>
             Sort by Oldest
           </button>
@@ -28,7 +29,7 @@ export const TodoForm = (props) => {
             type='button'
             className='sort'
             onClick={() => {
-              props.HandleDescSort();
+              props.handleDescSort();
             }}>
             Sort by Latest
           </button>
