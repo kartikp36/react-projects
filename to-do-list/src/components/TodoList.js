@@ -9,7 +9,6 @@ export const TodoList = () => {
 
   const addTodo = (newTodo) => {
     setList([newTodo, ...list]);
-    console.log(list);
   };
   const toggleComplete = (id) => {
     setList(
@@ -36,17 +35,11 @@ export const TodoList = () => {
   };
 
   const handleAscSort = () => {
-    setList(
-      [...list].sort((a, b) => new Date(a.created) - new Date(b.created))
-    );
+    setList([...list].sort((a, b) => a.created - b.created));
   };
 
   const handleDescSort = () => {
-    setList(
-      [...list]
-        .sort((a, b) => new Date(a.created) - new Date(b.created))
-        .reverse()
-    );
+    setList([...list].sort((a, b) => a.created - b.created).reverse());
   };
 
   return (
