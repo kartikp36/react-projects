@@ -39,7 +39,7 @@ export const TodoList = () => {
   };
 
   const handleDescSort = () => {
-    setList([...list].sort((a, b) => a.created - b.created).reverse());
+    setList([...list].sort((a, b) => b.created - a.created));
   };
 
   return (
@@ -47,8 +47,15 @@ export const TodoList = () => {
       <h2>Todo List</h2>
 
       <TodoForm
-        {...{ handleAscSort, handleDescSort, handleSubmit, text, created }}
+        {...{ handleSubmit, text, created }}
       />
+
+      <button type='button' className='sort' onClick={handleAscSort}>
+        Sort by Oldest
+      </button>
+      <button type='button' className='sort' onClick={handleDescSort}>
+        Sort by Latest
+      </button>
       {list.map((todo) => (
         <ToggleTodo key={todo.id} {...{ toggleComplete, todo }} />
       ))}
