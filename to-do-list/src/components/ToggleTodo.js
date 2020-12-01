@@ -12,8 +12,7 @@ export const ToggleTodo = (props) => {
         onChange={() => {
           props.toggleComplete(props.todo.id);
         }}></input>
-
-      {props.todo.text}
+      {`${props.todo.text} (${props.todo.created.toLocaleString()})`}
     </div>
   );
 };

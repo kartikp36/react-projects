@@ -4,6 +4,7 @@ import { ToggleTodo } from "./ToggleTodo";
 
 export const TodoList = () => {
   const [text, setText] = useState("");
+  const [created, setCreated] = useState("");
   const [list, setList] = useState([]);
 
   const addTodo = (newTodo) => {
@@ -29,14 +30,32 @@ export const TodoList = () => {
       id: Math.random(),
       text: inputText,
       complete: false,
+      created: new Date(),
     });
+  };
+
+  const handleAscSort = () => {
+    setList([...list].sort((a, b) => a.created - b.created));
+  };
+
+  const handleDescSort = () => {
+    setList([...list].sort((a, b) => b.created - a.created));
   };
 
   return (
     <div>
       <h2>Todo List</h2>
 
-      <TodoForm {...{ handleSubmit, text }} />
+      <TodoForm
+        {...{ handleSubmit, text, created }}
+      />
+
+      <button type='button' className='sort' onClick={handleAscSort}>
+        Sort by Oldest
+      </button>
+      <button type='button' className='sort' onClick={handleDescSort}>
+        Sort by Latest
+      </button>
       {list.map((todo) => (
         <ToggleTodo key={todo.id} {...{ toggleComplete, todo }} />
       ))}
