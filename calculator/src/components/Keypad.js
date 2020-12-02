@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import "./Keypad.css";
 export const Keypad = () => {
 	const [result, setResult] = useState("");
 	const calculate = () => {
@@ -28,7 +28,6 @@ export const Keypad = () => {
 		return array;
 	};
 
-<<<<<<< Updated upstream
 	const buttonPressed = (button) => {
 		if (button.target.name === "=") {
 			calculate();
@@ -39,15 +38,7 @@ export const Keypad = () => {
 		}
 	};
 
-	return (
-		<div>
-			<h2>Calculator</h2>
 
-			<h3>{result}</h3>
-			{renderKeys()}
-		</div>
-	);
-=======
   return (
     <div className='display'>
       <div>
@@ -57,5 +48,4 @@ export const Keypad = () => {
       <div className='buttons'>{renderKeys()}</div>
     </div>
   );
->>>>>>> Stashed changes
 };
